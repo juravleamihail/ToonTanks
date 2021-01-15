@@ -53,7 +53,6 @@ void APawnTank::BeginPlay()
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
-	Destroy();
 }
 
 // Called every frame
