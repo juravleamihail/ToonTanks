@@ -13,6 +13,11 @@ UHealthComponent::UHealthComponent()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
+float UHealthComponent::GetHealth()
+{
+	return Health;
+}
+
 
 // Called when the game starts
 void UHealthComponent::BeginPlay()

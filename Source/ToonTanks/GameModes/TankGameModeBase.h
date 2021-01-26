@@ -18,6 +18,7 @@ private:
 
 	APawnTank* PlayerTank;
 	APlayerControllerBase* PlayerControllerRef;
+	int32 TargetTurrets = 0;
 
 	int32 GetTargetTurretCount();
 	void HandleGameStart();
@@ -30,9 +31,13 @@ public:
 protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Game Loop")
-	int32 StartDelay = 3;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Game Loop")
-	int32 TargetTurrets = 0;
+	int32 StartDelay = 3;	
+
+	UFUNCTION(BlueprintPure)
+	int32 GetTurretsLeft() const
+	{
+		return TargetTurrets;
+	}
 
 	virtual void BeginPlay() override;
 	UFUNCTION(BlueprintImplementableEvent)

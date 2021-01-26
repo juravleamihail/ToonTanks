@@ -43,6 +43,9 @@ public:
 	APawnBase();
 	virtual void HandleDestruction();
 
+	UFUNCTION(BlueprintPure)
+	float GetHealth() const;
+
 protected:
 	void RotateTurret(FVector LookAtTarget);
 
