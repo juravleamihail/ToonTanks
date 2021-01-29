@@ -29,6 +29,12 @@ void ATankGameModeBase::ActorDied(AActor* DeadActor)
 	else if (APawnTurret* DestroyedTurret = Cast<APawnTurret>(DeadActor))
 	{
 		DestroyedTurret->HandleDestruction();
+		kills++;
+
+		if (kills == RAMPAGE_KILLS) {
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), RampageKillsSound, PlayerTank->GetActorLocation(), 1.0f, 1.0f, 0.0f);
+			kills = 0;
+		}
 
 		if (--TargetTurrets == 0)
 		{

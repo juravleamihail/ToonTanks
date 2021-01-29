@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/GameModeBase.h"
 #include "TankGameModeBase.generated.h"
 
@@ -19,6 +20,8 @@ private:
 	APawnTank* PlayerTank;
 	APlayerControllerBase* PlayerControllerRef;
 	int32 TargetTurrets = 0;
+	int kills = 0;
+	int const RAMPAGE_KILLS = 5;
 
 	int32 GetTargetTurretCount();
 	void HandleGameStart();
@@ -31,7 +34,9 @@ public:
 protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Game Loop")
-	int32 StartDelay = 3;	
+	int32 StartDelay = 3;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Kills")
+	USoundBase* RampageKillsSound;
 
 	UFUNCTION(BlueprintPure)
 	int32 GetTurretsLeft() const
